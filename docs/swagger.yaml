@@ -1,0 +1,51 @@
+basePath: /api
+host: localhost:8080
+info:
+  contact: {}
+  description: Sample server to get presigned URL from AWS S3
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: AWS S3 OTEL POC
+  version: "2.0"
+paths:
+  /s3/files/{name}:
+    get:
+      description: Get Presigned URL without OTEL
+      operationId: get.url.without.otel
+      parameters:
+      - description: The file name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Presigned URL without OTEL
+  /s3/files/otel/{name}:
+    get:
+      description: Get Presigned URL with OTEL
+      operationId: get.url.with.otel
+      parameters:
+      - description: The file name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Presigned URL with OTEL
+schemes:
+- http
+swagger: "2.0"

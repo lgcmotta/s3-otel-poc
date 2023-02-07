@@ -1,0 +1,75 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "Sample server to get presigned URL from AWS S3",
+        "title": "AWS S3 OTEL POC",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "2.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths": {
+        "/s3/files/otel/{name}": {
+            "get": {
+                "description": "Get Presigned URL with OTEL",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get Presigned URL with OTEL",
+                "operationId": "get.url.with.otel",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The file name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/s3/files/{name}": {
+            "get": {
+                "description": "Get Presigned URL without OTEL",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get Presigned URL without OTEL",
+                "operationId": "get.url.without.otel",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The file name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
