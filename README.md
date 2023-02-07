@@ -14,20 +14,20 @@ I've opened the generated URLs on a diff window, and there's a difference on the
 
 ## Usage
 
-- Configure the `~/.aws/credentials` file
-- Start the OTEL collector and Jaeger containers
+- Configure **default** credentials at the  `~/.aws/credentials` file
+- Start the **OTEL collector** and **Jaeger** containers
 
 ```bash
   docker compose up -d
 ```
 
-- Export the AWS S3 Bucket name
+- Export the environment variable `BUCKET_NAME` with an existent AWS S3 Bucket name:
 
 ```bash
-  export BUCKET_NAME=mybucket
+  export BUCKET_NAME=<your_bucket>
 ```
 
-- Start the application
+- Start the application:
 
 ```bash
   go run main.go
@@ -39,14 +39,14 @@ I've opened the generated URLs on a diff window, and there's a difference on the
 
 - Call the `/s3/files/{name}` endpoint with a valid S3 file within the your bucket.
 
-- Try to download the filed with the generated URL
+- Try to download the file with the generated URL, **this URL will work**.
 
 - Call the `/s3/files/otel/{name}` endpoint with a valid S3 file within the your bucket.
 
-- Try to download the filed with the generated URL
+- Try to download the file with the generated URL, **this URL will not work**.
 
 - Open Jaeger UI:
 
 > http://localhost:16686/
 
-- The trace for path `/s3/files/{name}` should have one span, while the trace for `/s3/files/otel/{name}` has two spans.
+- The trace for path `/s3/files/{name}` should have one span, while the trace for `/s3/files/otel/{name}` should have two spans.
