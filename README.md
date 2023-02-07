@@ -6,9 +6,9 @@ When adding the `otelaws.AppendMiddlewares(&cfg.APIOptions)`, all pre-signed URL
 
 ![image](https://user-images.githubusercontent.com/33238105/217125791-14a45626-7937-4fae-a1a3-f6f4997bc7f7.png)
 
-When commenting on this call for `otelaws.AppendMiddlewares(&cfg.APIOptions)` they immediately return to work.
+When removing `otelaws.AppendMiddlewares(&cfg.APIOptions)` they immediately return to work.
 
-I've opened the generated URLs on a diff window, and there's a difference on the `X-Amz-SignedHeaders`. The generated URL with **otelaws middlewares** has two values `host` and `traceparent`, while the one that was generated without **otelaws middlewares** has only `host`.
+I'm attaching an image from a diff window with the generated URLs. The only difference that is not related to the AWS account nor the link expiration time is the `X-Amz-SignedHeaders`. The URL generated from code with **otelaws middlewares** has two values `host` and `traceparent`, while the one without **otelaws middlewares** has only `host`.
 
 ![image](https://user-images.githubusercontent.com/33238105/217124120-f12c5afa-1625-49af-bf42-03bc38be119e.png)
 
